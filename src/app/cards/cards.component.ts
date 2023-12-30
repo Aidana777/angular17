@@ -2,6 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CardService } from '../services/card.service';
+import { SearchService } from '../service/layout.service';
+interface Product {
+  title: string;
+  imageUrl: string;
+  price: number;
+  rating: number;
+  id: number;
+}
 
 @Component({
   selector: 'app-cards',
@@ -21,19 +29,36 @@ export class CardsComponent {
     { "title": "Бургер с копчёной говядиной", "imageUrl": "https://brandfood.net/wp-content/uploads/2021/08/burger-s-koloj-1.png", "price": 25.99, "rating": 4.8, "id": 6 }
   ];
   filteredProducts: any[] = []
-  constructor(private cartService: CardService) {}
-  addToCard(product: any) {
-    this.cartService.addToCard(product)
+  constructor(private cartService: CardService,private searchService: SearchService) {}
+  ngOnInit() {
+    this.searchService.searchQuery$.subscribe(query => {
+      this.search(query);
+    });
+  }
+
+  addToCard(product: Product) {
+    this.cartService.addToCard(product);
   }
 
   search(query: string) {
     console.log('Query:', query);
 
-    this.filteredProducts = this.products.filter(product => {
-      const includes = product.title.toLowerCase().includes(query.toLowerCase());
-      console.log('Product:', product.title, 'Includes:', includes);
-      return includes;
-    });
+    // Reset the filteredProducts array before applying the new filter
+    this.filteredProducts = [];
+
+    // Apply the new filter based on the search query
+    if (query.trim() !== '') {
+      this.filteredProducts = this.products.filter((product: Product) => {
+        console.log('Product Title:', product.title);
+        return product.title.toLowerCase().includes(query.toLowerCase());
+      });
+    } else {
+      // If the query is empty, show all products
+      this.filteredProducts = [...this.products];
+    }
+
+    console.log('Filtered Products:', this.filteredProducts);
   }
+
 
 }
