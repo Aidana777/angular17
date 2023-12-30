@@ -20,20 +20,11 @@ export class CardsComponent {
     { "title": "Фирменный Бургер", "imageUrl": "https://menu2go.ru/images/food/8/8_20220801124838_2284.jpg", "price": 59.99, "rating": 3.7, "id": 5 },
     { "title": "Бургер с копчёной говядиной", "imageUrl": "https://brandfood.net/wp-content/uploads/2021/08/burger-s-koloj-1.png", "price": 25.99, "rating": 4.8, "id": 6 }
   ];
-  filteredProducts: any[] = []
   constructor(private cartService: CardService) {}
   addToCard(product: any) {
     this.cartService.addToCard(product)
   }
 
-  search(query: string) {
-    console.log('Query:', query);
-
-    this.filteredProducts = this.products.filter(product => {
-      const includes = product.title.toLowerCase().includes(query.toLowerCase());
-      console.log('Product:', product.title, 'Includes:', includes);
-      return includes;
-    });
-  }
+  
 
 }
