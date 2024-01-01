@@ -16,7 +16,19 @@ export class CardService {
       this.items.push({ ...product, quantity: 1 });
     }
   }
+// layout
+  addItem(item: any): void {
+    this.items.push(item);
+  }
 
+  getCartItems(): any[] {
+    return this.items;
+  }
+
+  getCartItemCount(): number {
+    return this.items.length;
+  }
+  // layout
   removeFromCard(product: any) {
     const existingItem = this.items.find((item) => item.id === product.id);
 

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CardService } from '../services/card.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-cards',
   standalone: true,
@@ -20,6 +20,7 @@ export class CardsComponent {
     { "title": "Фирменный Бургер", "imageUrl": "https://menu2go.ru/images/food/8/8_20220801124838_2284.jpg", "price": 59.99, "rating": 3.7, "id": 5 },
     { "title": "Бургер с копчёной говядиной", "imageUrl": "https://brandfood.net/wp-content/uploads/2021/08/burger-s-koloj-1.png", "price": 25.99, "rating": 4.8, "id": 6 }
   ];
+  cartItemCount: number = 0;
   constructor(private cartService: CardService) {}
   addToCard(product: any) {
     this.cartService.addToCard(product)
