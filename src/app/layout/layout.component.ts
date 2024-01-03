@@ -27,16 +27,5 @@ export class LayoutComponent {
   updateSearchQuery(event: any) {
     const query = event.target.value;
     this.searchService.updateSearchQuery(query);
-    this.cdr.detectChanges(); // Detect changes explicitly
-  }
-
-  addToCard(product: any) {
-    this.cardService.addToCard(product);
-    this.cdr.detectChanges(); // Trigger change detection
-  }
-
-  removeFromCard(product: any) {
-    this.cardService.removeFromCard(product);
-    this.cdr.detectChanges(); // Trigger change detection
   }
 }

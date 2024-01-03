@@ -1,14 +1,15 @@
 // card.service.ts
 
-import { Injectable, ApplicationRef } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CardService {
   private items: any[] = [];
+  totalQuantity: number = 0;
 
-  constructor(private appRef: ApplicationRef) {}
+  constructor(private zone: NgZone) {}
 
   addToCard(product: any) {
     const existingItem = this.items.find((item) => item.id === product.id);
@@ -19,8 +20,7 @@ export class CardService {
       this.items.push({ ...product, quantity: 1 });
     }
 
-    // Trigger change detection after modifying the card
-    this.appRef.tick();
+    this.updateTotalQuantity();
   }
 
   removeFromCard(product: any) {
@@ -29,16 +29,14 @@ export class CardService {
     if (existingItem && existingItem.quantity > 0) {
       existingItem.quantity--;
 
-      // Trigger change detection after modifying the card
-      this.appRef.tick();
+      this.updateTotalQuantity();
     }
   }
 
   removeItem(product: any) {
     this.items = this.items.filter((item) => item.id !== product.id);
 
-    // Trigger change detection after modifying the card
-    this.appRef.tick();
+    this.updateTotalQuantity();
   }
 
   getItemsWithQuantity() {
@@ -52,11 +50,18 @@ export class CardService {
   clearCart() {
     this.items = [];
 
-    // Trigger change detection after clearing the cart
-    this.appRef.tick();
+    this.updateTotalQuantity();
   }
 
-  getTotalQuantity(): number {
-    return this.items.reduce((total, item) => total + item.quantity, 0);
+  private updateTotalQuantity() {
+    this.totalQuantity = this.items.reduce((total, item) => total + item.quantity, 0);
+    this.zone.run(() => {
+      // Ensure the change detection runs inside Angular zone
+    });
+  }
+
+  // Add this method to create a copy of the totalQuantity
+  getTotalQuantity() {
+    return this.totalQuantity;
   }
 }
