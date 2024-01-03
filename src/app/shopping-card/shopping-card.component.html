@@ -1,15 +1,14 @@
 <!-- shopping-card.component.html -->
 
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
-    <!-- If cartItems is empty, display a message -->
-    <ng-container *ngIf="cartItems.length === 0; else cartItemsList">
-      <div class="text-center text-gray-500">
-        <p class="text-2xl font-bold mb-4">Корзина пуста</p>
-        <p class="text-lg">Добавьте товары в корзину и начните покупки!</p>
-      </div>
-    </ng-container>
-  
-    <!-- Display cart items if cartItems is not empty -->
+  <ng-container *ngIf="cartItems.length === 0; else cartItemsList" [@fadeInOut]>
+    <div class="text-center text-gray-500">
+      <p class="text-2xl font-bold mb-4">Корзина пуста</p>
+      <p class="text-lg">Добавьте товары в корзину и начните покупки!</p>
+    </div>
+  </ng-container>
+
+
     <ng-template #cartItemsList>
       <div *ngFor="let item of cartItems" class="cart-item bg-white p-4 rounded-lg shadow-md">
         <img class="w-full h-40 object-cover mb-2" [src]="item.imageUrl" alt="{{ item.title }} Image">
@@ -26,8 +25,8 @@
       </div>
     </ng-template>
   </div>
+
   
-  <!-- Display total and continue shopping button -->
   <div class="mt-4 text-xl font-bold" *ngIf="cartItems.length > 0">
     Итого: {{ calculateTotal() | currency:'RUB' }}
   </div>
