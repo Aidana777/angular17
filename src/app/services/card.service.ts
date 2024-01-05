@@ -60,7 +60,7 @@ export class CardService {
     });
   }
 
-  // Add this method to create a copy of the totalQuantity
+
   getTotalQuantity() {
     return this.totalQuantity;
   }

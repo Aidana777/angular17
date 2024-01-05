@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { ShoppingCardComponent } from './shopping-card/shopping-card.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CardService } from './services/card.service';
 
 
 
@@ -26,7 +27,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatBadgeModule,
     MatSnackBarModule,
   ],
-  providers: [],
+  providers: [CardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

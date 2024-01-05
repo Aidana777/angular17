@@ -4,7 +4,6 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SearchService } from '../services/search.service';
-import { NotificationService } from '../services/notification.service';
 import { CardService } from '../services/card.service';
 
 @Component({
@@ -14,12 +13,11 @@ import { CardService } from '../services/card.service';
   imports: [RouterLink, CommonModule],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.css'],
-  providers: [NotificationService, CardService]
+  providers: [CardService]
 })
 export class LayoutComponent {
   constructor(
     private searchService: SearchService,
-    public notificationService: NotificationService,
     public cardService: CardService,
     private cdr: ChangeDetectorRef
   ) {}
