@@ -21,6 +21,7 @@ export class LayoutComponent {
     public cardService: CardService,
     private cdr: ChangeDetectorRef
   ) {}
+  
 
   updateSearchQuery(event: any) {
     const query = event.target.value;
