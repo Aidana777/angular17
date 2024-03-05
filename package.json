@@ -22,6 +22,7 @@
     "@angular/router": "^17.0.0",
     "@material/snackbar": "^15.0.0-canary.a246a4439.0",
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",
+    "ngx-spinner": "^16.0.2",
     "ngx-toastr": "^18.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { CardService } from '../services/card.service';
 import { SearchService } from '../services/search.service';
 import { RouterLink } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-cards',
@@ -13,15 +14,17 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
-  constructor(private httpClient: HttpClient, private cartService: CardService, private searchService: SearchService) { }
+  constructor(private httpClient: HttpClient, private cartService: CardService, private searchService: SearchService, private spinner: NgxSpinnerService) { }
 
   products: any[] = [];
   filteredProducts: any[] = [];
 
   ngOnInit() {
+    this.spinner.show();
     this.httpClient.get<any[]>('assets/db.json').subscribe(data => {
       this.products = data;
       this.filteredProducts = this.products;
+      this.spinner.hide(); 
     });
   }
 
@@ -30,7 +33,9 @@ export class CardsComponent implements OnInit {
   }
 
   sortByType(type: string) {
+    this.spinner.show(); 
     this.filteredProducts = this.filterProductsByType(type);
+    this.spinner.hide(); 
   }
 
   addToCart(product: any) {
