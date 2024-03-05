@@ -1,0 +1,137 @@
+[
+    {
+        "title": "Классический Бургер",
+        "imageUrl": "https://recipes.av.ru//media/recipes/100608_picture_XNlaEKL.jpg",
+        "price": 29.99,
+        "rating": 4.5,
+        "id": 1,
+        "type": "burger"
+    },
+    {
+        "title": "Куриный Бургер",
+        "imageUrl": "https://fast-food.online/wp-content/uploads/2020/03/kurinyi-burger-s-avokado.png",
+        "price": 49.99,
+        "rating": 3.8,
+        "id": 2,
+        "type": "burger"
+    },
+    {
+        "title": "Калифорния Бургер",
+        "imageUrl": "https://www.burgerartist.com/wp-content/uploads/2016/09/california-burger-close-768x1152.jpg",
+        "price": 19.99,
+        "rating": 4.0,
+        "id": 3,
+        "type": "burger"
+    },
+    {
+        "title": "Лондон Бургер",
+        "imageUrl": "https://media.timeout.com/images/105422478/1536/864/image.jpg",
+        "price": 39.99,
+        "rating": 4.2,
+        "id": 4,
+        "type": "burger"
+    },
+    {
+        "title": "Фирменный Бургер",
+        "imageUrl": "https://menu2go.ru/images/food/8/8_20220801124838_2284.jpg",
+        "price": 59.99,
+        "rating": 3.7,
+        "id": 5,
+        "type": "burger"
+    },
+    {
+        "title": "Бургер с копчёной говядиной",
+        "imageUrl": "https://brandfood.net/wp-content/uploads/2021/08/burger-s-koloj-1.png",
+        "price": 25.99,
+        "rating": 4.8,
+        "id": 6,
+        "type": "burger"
+    },
+    {
+        "title": "Гриль бургер",
+        "imageUrl": "https://static.insales-cdn.com/images/products/1/4662/309441078/large_%D0%93%D1%80%D0%B8%D0%BB%D1%8C-%D0%B1%D1%83%D1%80%D0%B3%D0%B5%D1%80.jpg",
+        "price": 25.99,
+        "rating": 4.8,
+        "id": 7,
+        "type": "burger"
+    },
+    {
+        "title": "Фишбургер",
+        "imageUrl": "https://chefrestoran.ru/wp-content/uploads/2018/10/549443638.jpg",
+        "price": 25.99,
+        "rating": 4.8,
+        "id": 8,
+        "type": "burger"
+    },
+    {
+        "title": "Маргарита Пицца",
+        "imageUrl": "https://gotovim-doma.ru/images/recipe/5/e9/5e959e5cda3cb3d25a7fb9a469a65f3d_l.jpg",
+        "price": 19.99,
+        "rating": 4.5,
+        "id": 9,"type": "pizza"
+    },
+    {
+        "title": "Пепперони Пицца",
+        "imageUrl": "https://static.pizzasushiwok.ru/images/menu_new/6-1300.jpg",
+        "price": 24.99,
+        "rating": 4.2,
+        "id": 10,
+        "type": "pizza"
+    },
+    {
+        "title": "Гавайская Пицца",
+        "imageUrl": "https://ist.say7.info/img0002/23/223_0157t52_9606_1024.jpg",
+        "price": 22.99,
+        "rating": 4.0,
+        "id": 11,
+        "type": "pizza"
+    },
+    {
+        "title": "Вегетарианская Пицца",
+        "imageUrl": "https://i.lefood.menu/wp-content/uploads/w_images/2022/04/recept-39319-1240x827.jpg",
+        "price": 21.99,
+        "rating": 4.7,
+        "id": 12,
+        "type": "pizza"
+
+    },
+    {
+        "title": "Кола",
+        "imageUrl": "https://wasabi.kg/wp-content/uploads/2022/03/2265411_1630155383.518_original-280x280.jpg",
+        "price": 2.99,
+        "rating": 4.5,
+        "id": 13,
+        "type": "drink"
+    },
+    {
+        "title": "Спрайт",
+        "imageUrl": "https://www.otlichnye-tseny.ru/upload/iblock/f62/iqdhjkrb30c15qpwlrply3gh6jv6f0ey.jpg",
+        "price": 2.99,
+        "rating": 4.2,
+        "id": 14
+    },
+    {
+        "title": "Фанта",
+        "imageUrl": "https://wasabi.kg/wp-content/uploads/2022/03/media-share-0-02-05-f2e064c2eabe4f7c927b2a645a7707cb1a6f4616870881094e6be3da4b9967a6-picture.jpg",
+        "price": 2.99,
+        "rating": 4.0,
+        "id": 15,
+        "type": "drink"
+    },
+    {
+        "title": "Чай",
+        "imageUrl": "https://www.rbc.ua/static/img/g/l/glass_teapot_with_tea_wooden_board_650x410.jpg",
+        "price": 1.99,
+        "rating": 4.8,
+        "id": 16,
+        "type": "drink"
+    },
+    {
+        "title": "Кофе",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Turkishcoffee.jpg/330px-Turkishcoffee.jpg",
+        "price": 2.49,
+        "rating": 4.8,
+        "id": 17,
+        "type": "drink"
+    }
+]

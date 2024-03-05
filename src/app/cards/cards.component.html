@@ -1,4 +1,11 @@
 <div class="container">
+  <!-- Sorting buttons -->
+  <div class="flex justify-items-center ">
+    <button class="ml-[30px] border-[1px] border-[solid] border-[black] w-[300px] rounded-[20px]" (click)="sortByType('burger')">Burgers</button>
+    <button class="ml-[30px] border-[1px] border-[solid] border-[black] w-[300px] rounded-[20px]" (click)="sortByType('pizza')">Pizzas</button>
+    <button class="ml-[30px] border-[1px] border-[solid] border-[black] w-[300px] rounded-[20px] " (click)="sortByType('drink')">Drinks</button>
+  </div>
+
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
     <div *ngFor="let product of filteredProducts" class="mb-2 text-center">
       <img class="w-full h-40 object-cover mb-2" [src]="product.imageUrl" alt="{{ product.title }} Image">
@@ -7,7 +14,7 @@
       <div class="rating text-gray-600" *ngIf="product.rating !== undefined">
         Rating: {{ product.rating }}/5
       </div>
-      <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" (click)="addToCard(product)">
+      <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" (click)="addToCart(product)">
         Add to Cart
       </button>
     </div>
