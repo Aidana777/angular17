@@ -1,12 +1,12 @@
-<div class="container" *ngIf="!isLoading">
-  <!-- Sorting buttons -->
-  <div class="flex justify-items-center">
+<div class="container">
+  <!-- Sorting  -->
+  
+  <div class="flex justify-items-center ">
     <button class="ml-[30px] border-[1px] border-[solid] border-[black] w-[300px] rounded-[20px]" (click)="sortByType('burger')">Burgers</button>
     <button class="ml-[30px] border-[1px] border-[solid] border-[black] w-[300px] rounded-[20px]" (click)="sortByType('pizza')">Pizzas</button>
     <button class="ml-[30px] border-[1px] border-[solid] border-[black] w-[300px] rounded-[20px] " (click)="sortByType('drink')">Drinks</button>
   </div>
 
-  <!-- Grid for products -->
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
     <div *ngFor="let product of filteredProducts" class="mb-2 text-center">
       <img class="w-full h-40 object-cover mb-2" [src]="product.imageUrl" alt="{{ product.title }} Image">
@@ -19,11 +19,5 @@
         Add to Cart
       </button>
     </div>
-  </div>
-</div>
-
-<div *ngIf="isLoading" class="flex justify-center items-center h-screen">
-  <div class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
   </div>
 </div>
