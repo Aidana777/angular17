@@ -1,12 +1,9 @@
 <div class="container">
-  <!-- Sorting  -->
-  
   <div class="flex justify-items-center ">
     <button class="ml-[30px] border-[1px] border-[solid] border-[black] w-[300px] rounded-[20px]" (click)="sortByType('burger')">Burgers</button>
     <button class="ml-[30px] border-[1px] border-[solid] border-[black] w-[300px] rounded-[20px]" (click)="sortByType('pizza')">Pizzas</button>
     <button class="ml-[30px] border-[1px] border-[solid] border-[black] w-[300px] rounded-[20px] " (click)="sortByType('drink')">Drinks</button>
   </div>
-
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
     <div *ngFor="let product of filteredProducts" class="mb-2 text-center">
       <img class="w-full h-40 object-cover mb-2" [src]="product.imageUrl" alt="{{ product.title }} Image">
