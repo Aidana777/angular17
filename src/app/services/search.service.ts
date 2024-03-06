@@ -1,16 +1,15 @@
-// search.service.ts
-// search.service.ts
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
-  private searchQuerySource = new BehaviorSubject<string>('');
-  searchQuery$ = this.searchQuerySource.asObservable();
+  constructor() { }
 
-  updateSearchQuery(query: string) {
-    this.searchQuerySource.next(query);
+  filterProductsByQuery(products: any[], query: string): any[] {
+
+    return products.filter(product =>
+      product.title.toLowerCase().includes(query.toLowerCase())
+    );
   }
 }

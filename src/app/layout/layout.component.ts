@@ -1,5 +1,3 @@
-// layout.component.ts
-
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -16,6 +14,8 @@ import { CardService } from '../services/card.service';
   providers: [CardService]
 })
 export class LayoutComponent {
+  searchResults: any[] = []; // Добавляем свойство searchResults
+
   constructor(
     private searchService: SearchService,
     public cardService: CardService,
@@ -25,6 +25,8 @@ export class LayoutComponent {
 
   updateSearchQuery(event: any) {
     const query = event.target.value;
-    this.searchService.updateSearchQuery(query);
+    this.searchResults = this.searchService.filterProductsByQuery(this.cardService.products, query);
   }
 }
+
+

@@ -8,9 +8,14 @@ import { Injectable, NgZone } from '@angular/core';
 export class CardService {
   private items: any[] = [];
   totalQuantity: number = 0;
+  products: any[] = [];
 
   constructor(private zone: NgZone) {}
-
+  filterProductsByTitle(title: string): any[] {
+    return this.products.filter(product =>
+      product.title.toLowerCase().includes(title.toLowerCase())
+    );
+  }  
   addToCard(product: any) {
     const existingItem = this.items.find((item) => item.id === product.id);
 
