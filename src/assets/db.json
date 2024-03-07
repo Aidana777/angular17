@@ -1,4 +1,3 @@
-
 [
     {
         "title": "Классический Бургер",
@@ -69,7 +68,8 @@
         "imageUrl": "https://gotovim-doma.ru/images/recipe/5/e9/5e959e5cda3cb3d25a7fb9a469a65f3d_l.jpg",
         "price": 19.99,
         "rating": 4.5,
-        "id": 9,"type": "pizza"
+        "id": 9,
+        "type": "pizza"
     },
     {
         "title": "Пепперони Пицца",
@@ -94,7 +94,6 @@
         "rating": 4.7,
         "id": 12,
         "type": "pizza"
-
     },
     {
         "title": "Кола",
@@ -133,6 +132,62 @@
         "price": 2.49,
         "rating": 4.8,
         "id": 17,
+        "type": "drink"
+    },
+    {
+        "title": "Ягодный лимонад",
+        "imageUrl": "https://richifamily.ru/upload/resize_cache/iblock/690/550_550_1/690cefd65666dac186bc8bafbb78fa4b.jpg",
+        "price": 2.49,
+        "rating": 4.8,
+        "id": 18,
+        "type": "drink"
+    },
+    {
+        "title": "Лимонад из голубики и базилика",
+        "imageUrl": "https://sgastronomy.ru/wp-content/uploads/2022/07/01r.jpg",
+        "price": 2.49,
+        "rating": 4.8,
+        "id": 19,
+        "type": "drink"
+    },
+    {
+        "title": " Кокосовый лимонад в кувшине",
+        "imageUrl": "https://www.yumania.ru/images/9/7/6/2/7/976270d75817a376ade1fe383d25a17af4495024-main.jpeg",
+        "price": 2.49,
+        "rating": 4.8,
+        "id": 20,
+        "type": "drink"
+    },
+    {
+        "title": "Клубничный лимонад",
+        "imageUrl": "https://barshaker.ru/images/cocktails/cocktail_card/crop_w60a1917.png",
+        "price": 2.49,
+        "rating": 4.8,
+        "id": 21,
+        "type": "drink"
+    },
+    {
+        "title": "лимонад лайм мята",
+        "imageUrl": "https://vechera.me/uploads/cocktail/photo/317/foto.png",
+        "price": 2.49,
+        "rating": 4.8,
+        "id": 22,
+        "type": "drink"
+    },
+    {
+        "title": "Тропический лимонад в кувшине",
+        "imageUrl": "https://preview.free3d.com/img/2016/03/1868207297856013941/iftrec57.jpg",
+        "price": 2.49,
+        "rating": 4.8,
+        "id": 23,
+        "type": "drink"
+    },
+    {
+        "title": "Малиновый лимонад",
+        "imageUrl": "https://retsept-prigotovleniya.ru/wp-content/uploads/2020/06/1-30.jpg",
+        "price": 2.49,
+        "rating": 4.8,
+        "id": 24,
         "type": "drink"
     }
 ]

@@ -14,7 +14,7 @@ import { CardService } from '../services/card.service';
   providers: [CardService]
 })
 export class LayoutComponent {
-  searchResults: any[] = []; // Добавляем свойство searchResults
+  searchResults: any[] = [];
 
   constructor(
     private searchService: SearchService,
