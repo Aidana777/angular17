@@ -1,32 +1,19 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SearchService } from '../services/search.service';
-import { CardService } from '../services/card.service';
 
 @Component({
   selector: 'app-layout',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [RouterLink, CommonModule],
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.css'],
-  providers: [CardService]
+  styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent {
-  searchResults: any[] = [];
-
-  constructor(
-    private searchService: SearchService,
-    public cardService: CardService,
-    private cdr: ChangeDetectorRef
-  ) {}
-  
-
+  constructor(private searchService: SearchService) {}
   updateSearchQuery(event: any) {
     const query = event.target.value;
-    this.searchResults = this.searchService.filterProductsByQuery(this.cardService.products, query);
+    this.searchService.updateSearchQuery(query);
   }
 }
-
-

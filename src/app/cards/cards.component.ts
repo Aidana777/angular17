@@ -1,39 +1,40 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { CardService } from '../services/card.service';
 import { SearchService } from '../services/search.service';
-import { RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cards',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink, CommonModule],
   templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.css']
+  styleUrl: './cards.component.css'
 })
-export class CardsComponent implements OnInit {
-  constructor(private httpClient: HttpClient, private cartService: CardService, private searchService: SearchService) { }
-
+export class CardsComponent {
   products: any[] = [];
   filteredProducts: any[] = [];
 
+  constructor(private httpClient: HttpClient, private cartService: CardService, private searchService: SearchService) { }
+
   ngOnInit() {
-    this.httpClient.get<any[]>('assets/db.json').subscribe(data => {
-      this.products = data;
-      this.filteredProducts = this.products;
+    this.httpClient.get<any[]>('assets/db.json')
+      .subscribe(data => {
+        this.products = data;
+        this.filteredProducts = this.products;
+      });
+
+    this.searchService.searchQuery$.subscribe(query => {
+      this.filteredProducts = this.filterProducts(query);
     });
   }
 
-  filterProductsByType(type: string): any[] {
-    return this.products.filter(product => product.type === type);
+  filterProducts(query: string): any[] {
+    return this.products.filter(product => product.title.toLowerCase().includes(query.toLowerCase()));
   }
 
-  sortByType(type: string) {
-    this.filteredProducts = this.filterProductsByType(type);
-  }
-
-  addToCart(product: any) {
+  addToCard(product: any) {
     this.cartService.addToCard(product);
   }
 }
