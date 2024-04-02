@@ -35,6 +35,6 @@ export class CardsComponent {
   }
 
   addToCart(product: any) {
-    this.cartService.addToCart(product); // Изменено на addToCart
+    this.cartService.addToCart(product); 
   }
 }

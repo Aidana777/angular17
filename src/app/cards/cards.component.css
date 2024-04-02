@@ -6,7 +6,7 @@
 
 /* Для мобильных устройств */
 @media (max-width: 767px) {
-    .md\:h-20 {
+    .cart {
         height: 360px;
         width: 300px;
 
