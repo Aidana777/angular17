@@ -1,37 +1,32 @@
-<!-- shopping-card.component.html -->
-
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
-  <ng-container *ngIf="cartItems.length === 0; else cartItemsList" [@fadeInOut]>
+  <ng-container *ngIf="cartItems.length === 0; else cartItemsList">
     <div class="text-center text-gray-500">
       <p class="text-2xl font-bold mb-4">Корзина пуста</p>
       <p class="text-lg">Добавьте товары в корзину и начните покупки!</p>
     </div>
   </ng-container>
+</div>
 
-
-    <ng-template #cartItemsList>
-      <div *ngFor="let item of cartItems" class="cart-item bg-white p-4 rounded-lg shadow-md">
-        <img class="w-full h-40 object-cover mb-2" [src]="item.imageUrl" alt="{{ item.title }} Image">
-        <div class="cart-item-details">
-          <h3 class="text-lg  mb-1">{{ item.title }}</h3>
-          <p class="text-gray-700">Цена: {{ item.price | currency:'RUB' }}</p>
-          <p class="text-gray-700">Количество: {{ item.quantity }}</p>
-          <div class="flex space-x-2 mt-2">
-            <button class="bg-blue-500 text-white px-3 py-1 rounded" (click)="increaseQuantity(item)">+</button>
-            <button class="bg-blue-500 text-white px-3 py-1 rounded" (click)="decreaseQuantity(item)">-</button>
-            <button class="bg-red-500 text-white px-3 py-1 rounded" (click)="removeItem(item)">Удалить</button>
-          </div>
-        </div>
+<ng-template #cartItemsList>
+  <div *ngFor="let item of cartItems" class="cart-item bg-white p-4 rounded-lg shadow-md">
+    <img class="w-full h-40 object-cover mb-2" [src]="item.imageUrl" alt="{{ item.title }} Image">
+    <div class="cart-item-details">
+      <h3 class="text-lg  mb-1">{{ item.title }}</h3>
+      <p class="text-gray-700">Цена: {{ item.price | currency:'RUB' }}</p>
+      <p class="text-gray-700">Количество: {{ item.quantity }}</p>
+      <div class="flex space-x-2 mt-2">
+        <button class="bg-blue-500 text-white px-3 py-1 rounded" (click)="increaseQuantity(item)">+</button>
+        <button class="bg-blue-500 text-white px-3 py-1 rounded" (click)="decreaseQuantity(item)">-</button>
+        <button class="bg-red-500 text-white px-3 py-1 rounded" (click)="removeItem(item)">Удалить</button>
       </div>
-    </ng-template>
+    </div>
   </div>
+</ng-template>
 
-  
-  <div class="mt-4 text-xl font-bold" *ngIf="cartItems.length > 0">
-    Итого: {{ calculateTotal() | currency:'RUB' }}
-  </div>
-  
-  <button *ngIf="cartItems.length > 0" class="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" (click)="continueShopping()">
-    Продолжить покупки
-  </button>
-  
+<div class="mt-4 text-xl font-bold" *ngIf="cartItems.length > 0">
+  Итого: {{ calculateTotal() | currency:'RUB' }}
+</div>
+
+<button *ngIf="cartItems.length > 0" class="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" (click)="continueShopping()">
+  Продолжить покупки
+</button>

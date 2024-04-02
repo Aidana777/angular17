@@ -19,7 +19,7 @@ export class CardsComponent {
   constructor(private httpClient: HttpClient, private cartService: CardService, private searchService: SearchService) { }
 
   ngOnInit() {
-    this.httpClient.get<any[]>('assets/db.json')
+    this.httpClient.get<any[]>('../../assets/db.json')
       .subscribe(data => {
         this.products = data;
         this.filteredProducts = this.products;

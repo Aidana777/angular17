@@ -1,29 +1,14 @@
-// shopping-card.component.ts
-
 import { Component } from '@angular/core';
 import { CardService } from '../services/card.service';
-import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Router } from '@angular/router';
-import { animate, style, transition, trigger } from '@angular/animations';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-shopping-card',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './shopping-card.component.html',
+  imports: [ CommonModule],
   styleUrls: ['./shopping-card.component.css'],
-  providers: [CurrencyPipe],
-  animations: [
-    trigger('fadeInOut', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('300ms', style({ opacity: 1 })),
-      ]),
-      transition(':leave', [
-        animate('300ms', style({ opacity: 0 })),
-      ]),
-    ]),
-  ],
+  templateUrl: './shopping-card.component.html',
 })
 export class ShoppingCardComponent {
   cartItems: any[] = [];
@@ -38,12 +23,12 @@ export class ShoppingCardComponent {
 
   decreaseQuantity(item: any) {
     this.cartService.removeFromCard(item);
-    this.cartItems = this.cartService.getItemsWithQuantity().slice(); // Update cartItems with a new reference
+    this.cartItems = this.cartService.getItemsWithQuantity().slice();
   }
 
   removeItem(item: any) {
     this.cartService.removeItem(item);
-    this.cartItems = this.cartService.getItemsWithQuantity().slice(); // Update cartItems with a new reference
+    this.cartItems = this.cartService.getItemsWithQuantity().slice();
   }
 
   calculateTotal() {
