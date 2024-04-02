@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CardService } from '../services/card.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -7,28 +7,36 @@ import { CommonModule } from '@angular/common';
   selector: 'app-shopping-card',
   standalone: true,
   imports: [ CommonModule],
-  styleUrls: ['./shopping-card.component.css'],
   templateUrl: './shopping-card.component.html',
+  styleUrls: ['./shopping-card.component.css'],
 })
-export class ShoppingCardComponent {
+export class ShoppingCardComponent implements OnInit {
   cartItems: any[] = [];
+  cartItemCount: number = 0;
 
-  constructor(private cartService: CardService, private router: Router) {
-    this.cartItems = cartService.getItemsWithQuantity();
+  constructor(private cartService: CardService, private router: Router) {}
+
+  ngOnInit() {
+    this.updateCartData();
+  }
+
+  updateCartData() {
+    this.cartItemCount = this.cartService.getItemCount();
   }
 
   increaseQuantity(item: any) {
     this.cartService.addToCard(item);
+    this.updateCartData();
   }
 
   decreaseQuantity(item: any) {
     this.cartService.removeFromCard(item);
-    this.cartItems = this.cartService.getItemsWithQuantity().slice();
+    this.updateCartData();
   }
 
   removeItem(item: any) {
     this.cartService.removeItem(item);
-    this.cartItems = this.cartService.getItemsWithQuantity().slice();
+    this.updateCartData();
   }
 
   calculateTotal() {
