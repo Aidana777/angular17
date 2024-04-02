@@ -10,7 +10,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './shopping-card.component.html',
   styleUrls: ['./shopping-card.component.css'],
 })
-export class ShoppingCardComponent implements OnInit {
+
+export class ShoppingCartComponent implements OnInit {
   cartItems: any[] = [];
   cartItemCount: number = 0;
 
@@ -21,16 +22,17 @@ export class ShoppingCardComponent implements OnInit {
   }
 
   updateCartData() {
+    this.cartItems = this.cartService.getCartItems();
     this.cartItemCount = this.cartService.getItemCount();
   }
 
   increaseQuantity(item: any) {
-    this.cartService.addToCard(item);
+    this.cartService.addToCart(item);
     this.updateCartData();
   }
 
   decreaseQuantity(item: any) {
-    this.cartService.removeFromCard(item);
+    this.cartService.removeFromCart(item);
     this.updateCartData();
   }
 

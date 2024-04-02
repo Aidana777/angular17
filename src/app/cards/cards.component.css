@@ -3,3 +3,10 @@
     max-width: 600px;
     margin-top: 10px;
 }
+/* Для мобильных устройств */
+@media (max-width: 767px) {
+    .md\:h-20 {
+      height: 20px 
+    }
+  }
+  

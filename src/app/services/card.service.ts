@@ -7,7 +7,7 @@ export class CardService {
   private items: any[] = [];
   cartUpdated = new EventEmitter<void>();
 
-  addToCard(product: any) {
+  addToCart(product: any) {
     const existingItem = this.items.find((item) => item.id === product.id);
 
     if (existingItem) {
@@ -20,7 +20,7 @@ export class CardService {
     this.cartUpdated.emit();
   }
 
-  removeFromCard(product: any) {
+  removeFromCart(product: any) {
     const existingItem = this.items.find((item) => item.id === product.id);
 
     if (existingItem && existingItem.quantity > 0) {
@@ -44,5 +44,9 @@ export class CardService {
 
   calculateTotal() {
     return this.items.reduce((total, item) => total + item.price * item.quantity, 0);
+  }
+
+  getCartItems(): any[] {
+    return this.items;
   }
 }

@@ -9,7 +9,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppComponent } from './app.component';
 import { CardsComponent } from './cards/cards.component';
 import { LayoutComponent } from './layout/layout.component';
-import { ShoppingCardComponent } from './shopping-card/shopping-card.component';
+import { ShoppingCartComponent  } from './shopping-card/shopping-card.component';
 import { CardService } from './services/card.service';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { CardService } from './services/card.service';
     AppComponent,
     CardsComponent,
     LayoutComponent,
-    ShoppingCardComponent,
+    ShoppingCartComponent ,
   ],
   imports: [
     BrowserModule,

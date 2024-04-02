@@ -1,13 +1,13 @@
 <div class="container">
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
     <div *ngFor="let product of filteredProducts" class="mb-2 text-center">
-      <img class="w-full h-40 object-cover mb-2" [src]="product.imageUrl" alt="{{ product.title }} Image">
+      <img class="w-full h-40 object-cover mb-2 md:h-20" [src]="product.imageUrl" alt="{{ product.title }} Image">
       <h2 class="text-lg font-semibold mb-1">{{ product.title }}</h2>
       <p class="text-gray-700 mb-2">Price: {{ product.price | currency: 'USD' }}</p>
       <div class="rating text-gray-600" *ngIf="product.rating !== undefined">
         Rating: {{ product.rating }}/5
       </div>
-      <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" (click)="addToCard(product)">
+      <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" (click)="addToCart(product)">
         Add to Cart
       </button>
     </div>

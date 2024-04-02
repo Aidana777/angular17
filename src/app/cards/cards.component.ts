@@ -34,7 +34,7 @@ export class CardsComponent {
     return this.products.filter(product => product.title.toLowerCase().includes(query.toLowerCase()));
   }
 
-  addToCard(product: any) {
-    this.cartService.addToCard(product);
+  addToCart(product: any) {
+    this.cartService.addToCart(product); // Изменено на addToCart
   }
 }

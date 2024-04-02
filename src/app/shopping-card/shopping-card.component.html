@@ -9,9 +9,9 @@
 
 <ng-template #cartItemsList>
   <div *ngFor="let item of cartItems" class="cart-item bg-white p-4 rounded-lg shadow-md">
-    <img class="w-full h-40 object-cover mb-2" [src]="item.imageUrl" alt="{{ item.title }} Image">
+    <img class="w-full h-40 object-cover mb-2" [src]="item.imageUrl" alt="{{ item.title }} Изображение">
     <div class="cart-item-details">
-      <h3 class="text-lg  mb-1">{{ item.title }}</h3>
+      <h3 class="text-lg mb-1">{{ item.title }}</h3>
       <p class="text-gray-700">Цена: {{ item.price | currency:'RUB' }}</p>
       <p class="text-gray-700">Количество: {{ item.quantity }}</p>
       <div class="flex space-x-2 mt-2">
