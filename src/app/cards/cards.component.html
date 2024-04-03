@@ -1,6 +1,7 @@
 <div class="container">
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
-    <div *ngFor="let product of filteredProducts" class="mb-2 text-center">
+    <div *ngFor="let product of pagedProducts" class="mb-2 text-center">
+      
       <img class="w-full h-40 object-cover mb-2 cart" [src]="product.imageUrl" alt="{{ product.title }} Image">
       <h2 class="text-lg font-semibold mb-1">{{ product.title }}</h2>
       <p class="text-gray-700 mb-2">Price: {{ product.price | currency: 'USD' }}</p>
@@ -12,5 +13,10 @@
       </button>
     </div>
   </div>
-</div>
 
+  <div class="pagination flex justify-center mt-8">
+    <button class="pagination-button px-4 py-2 mr-2 bg-green-500 text-white rounded disabled:bg-gray-400" (click)="pageChanged(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+    <span class="pagination-info">Page {{ currentPage }} of {{ getTotalPages() }}</span>
+    <button class="pagination-button px-4 py-2 ml-2 bg-green-500 text-white rounded disabled:bg-gray-400" (click)="pageChanged(currentPage + 1)" [disabled]="currentPage === getTotalPages()">Next</button>
+  </div>
+  
