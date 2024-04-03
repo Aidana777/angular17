@@ -18,8 +18,7 @@ export class CardsComponent {
   pagedProducts: any[] = [];
   currentPage: number = 1;
   itemsPerPage: number = 8;
-  sortBy: string = ''; // Добавляем переменную для хранения направления сортировки
-
+  sortBy: string = ''; 
   constructor(private httpClient: HttpClient, private cartService: CardService, private searchService: SearchService) { }
 
   ngOnInit() {
