@@ -12,7 +12,7 @@
     <img class="w-full h-40 object-cover mb-2" [src]="item.imageUrl" alt="{{ item.title }} Изображение">
     <div class="cart-item-details">
       <h3 class="text-lg mb-1">{{ item.title }}</h3>
-      <p class="text-gray-700">Цена: {{ item.price | currency:'RUB' }}</p>
+      <p class="text-gray-700">Цена: {{ item.price | currency:'USD' }}</p>
       <p class="text-gray-700">Количество: {{ item.quantity }}</p>
       <div class="flex space-x-2 mt-2">
         <button class="bg-blue-500 text-white px-3 py-1 rounded" (click)="increaseQuantity(item)">+</button>
@@ -22,7 +22,6 @@
     </div>
   </div>
 </ng-template>
-
 <div class="mt-4 text-xl font-bold" *ngIf="cartItems.length > 0">
   Итого: {{ calculateTotal() | currency:'RUB' }}
 </div>
