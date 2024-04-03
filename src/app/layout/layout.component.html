@@ -1,7 +1,7 @@
 <div class="flex items-center justify-center bg-purple-500">
   <a class="mr-[10px]" routerLink="/">Shop</a>
   <input class="w-[300px] h-[30px]" type="text" placeholder="Поиск" (input)="updateSearchQuery($event)">
-  <a routerLink="/shopping-card" class="flex mr-[10px]"> <!-- Corrected class attribute -->
+  <a routerLink="/shopping-card" class="flex mr-[10px]">
     <img class="w-[40px] h-[40px] ml-[10px]" src="../../assets/images/add-to-cart-3046.svg" alt="">
     <span class="text-white ml-1">{{ cartItemCount }}</span>
   </a>

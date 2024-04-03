@@ -12,12 +12,13 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.css'
 })
-export class CardsComponent  {
+export class CardsComponent {
   products: any[] = [];
   filteredProducts: any[] = [];
   pagedProducts: any[] = [];
   currentPage: number = 1;
-  itemsPerPage: number = 8; // Укажите количество элементов на странице по своему усмотрению
+  itemsPerPage: number = 8;
+  sortBy: string = ''; // Добавляем переменную для хранения направления сортировки
 
   constructor(private httpClient: HttpClient, private cartService: CardService, private searchService: SearchService) { }
 
@@ -26,12 +27,12 @@ export class CardsComponent  {
       .subscribe(data => {
         this.products = data;
         this.filteredProducts = this.products;
-        this.setPage(1); // Инициализация пагинации
+        this.setPage(1);
       });
 
     this.searchService.searchQuery$.subscribe(query => {
       this.filteredProducts = this.filterProducts(query);
-      this.setPage(1); // Сброс пагинации при изменении поискового запроса
+      this.setPage(1);
     });
   }
 
@@ -56,5 +57,18 @@ export class CardsComponent  {
 
   getTotalPages(): number {
     return Math.ceil(this.filteredProducts.length / this.itemsPerPage);
+  }
+
+
+  sortByPrice(order: string) {
+    this.sortBy = order;
+    this.filteredProducts.sort((a, b) => {
+      if (order === 'asc') {
+        return a.price - b.price;
+      } else {
+        return b.price - a.price;
+      }
+    });
+    this.setPage(1); 
   }
 }
