@@ -10,7 +10,7 @@ import { CardsComponent } from './cards/cards.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ShoppingCartComponent  } from './shopping-card/shopping-card.component';
 import { CardService } from './services/card.service';
-import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -26,8 +26,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RouterModule.forRoot([]),
     MatBadgeModule,
     MatSnackBarModule,
-    FormsModule, // Add FormsModule to imports
-    NgxPaginationModule // Include NgxPaginationModule in imports
+    FormsModule,
   ],
   providers: [CardService],
   bootstrap: [AppComponent],
