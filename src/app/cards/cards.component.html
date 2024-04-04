@@ -1,13 +1,14 @@
 <div class="container">
-  <!-- Кнопки сортировки -->
-  <div class="flex justify-center mb-4">
-    <button class="sort-button mr-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" (click)="sortByPrice('asc')">Сортировать по возрастанию цены</button>
-    <button class="sort-button bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" (click)="sortByPrice('desc')">Сортировать по убыванию цены</button>
+  <div class="sorting-dropdown">
+    <label for="sortOrder">Sort By:</label>
+    <select id="sortOrder" (change)="onSortOrderChange($event)">
+      <option value="asc">Price: Low to High</option>
+      <option value="desc">Price: High to Low</option>
+    </select>
   </div>
-
-  <!-- Отображение продуктов -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
-    <div *ngFor="let product of filteredProducts" class="mb-2 text-center">
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
+    <div *ngFor="let product of pagedProducts" class="mb-2 text-center">
       
       <img class="w-full h-40 object-cover mb-2 cart" [src]="product.imageUrl" alt="{{ product.title }} Image">
       <h2 class="text-lg font-semibold mb-1">{{ product.title }}</h2>
@@ -21,7 +22,6 @@
     </div>
   </div>
 
-  <!-- Пагинация -->
   <div class="pagination flex justify-center mt-8">
     <button class="pagination-button px-4 py-2 mr-2 bg-green-500 text-white rounded disabled:bg-gray-400" (click)="pageChanged(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
     <span class="pagination-info">Page {{ currentPage }} of {{ getTotalPages() }}</span>

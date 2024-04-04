@@ -5,6 +5,8 @@ import { CardService } from '../services/card.service';
 import { SearchService } from '../services/search.service';
 import { HttpClient } from '@angular/common/http';
 
+
+
 @Component({
   selector: 'app-cards',
   standalone: true,
@@ -18,7 +20,8 @@ export class CardsComponent {
   pagedProducts: any[] = [];
   currentPage: number = 1;
   itemsPerPage: number = 8;
-  sortBy: string = ''; 
+  sortDirection: 'asc' | 'desc' = 'asc'; // Default sort direction
+
   constructor(private httpClient: HttpClient, private cartService: CardService, private searchService: SearchService) { }
 
   ngOnInit() {
@@ -26,12 +29,12 @@ export class CardsComponent {
       .subscribe(data => {
         this.products = data;
         this.filteredProducts = this.products;
-        this.setPage(1);
+        this.setPage(1); // Initialize pagination
       });
 
     this.searchService.searchQuery$.subscribe(query => {
       this.filteredProducts = this.filterProducts(query);
-      this.setPage(1);
+      this.setPage(1); // Reset pagination on search
     });
   }
 
@@ -58,16 +61,24 @@ export class CardsComponent {
     return Math.ceil(this.filteredProducts.length / this.itemsPerPage);
   }
 
+  sortAscending() {
+    this.filteredProducts.sort((a, b) => a.price - b.price);
+    this.sortDirection = 'asc';
+    this.setPage(1); // Reset pagination after sorting
+  }
 
-  sortByPrice(order: string) {
-    this.sortBy = order;
-    this.filteredProducts.sort((a, b) => {
-      if (order === 'asc') {
-        return a.price - b.price;
-      } else {
-        return b.price - a.price;
-      }
-    });
-    this.setPage(1); 
+  sortDescending() {
+    this.filteredProducts.sort((a, b) => b.price - a.price);
+    this.sortDirection = 'desc';
+    this.setPage(1); // Reset pagination after sorting
+  }
+
+  onSortOrderChange(event: Event) {
+    const sortOrder = (event.target as HTMLSelectElement).value;
+    if (sortOrder === 'asc') {
+      this.sortAscending();
+    } else if (sortOrder === 'desc') {
+      this.sortDescending();
+    }
   }
 }
