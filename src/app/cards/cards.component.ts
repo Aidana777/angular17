@@ -20,21 +20,24 @@ export class CardsComponent {
   pagedProducts: any[] = [];
   currentPage: number = 1;
   itemsPerPage: number = 8;
-  sortDirection: 'asc' | 'desc' = 'asc'; // Default sort direction
+  sortDirection: 'asc' | 'desc' = 'asc';
+  loading: boolean = false;
 
   constructor(private httpClient: HttpClient, private cartService: CardService, private searchService: SearchService) { }
 
   ngOnInit() {
+    this.loading = true;
     this.httpClient.get<any[]>('../../assets/db.json')
       .subscribe(data => {
         this.products = data;
         this.filteredProducts = this.products;
-        this.setPage(1); // Initialize pagination
+        this.setPage(1);
+        this.loading = false;
       });
 
     this.searchService.searchQuery$.subscribe(query => {
       this.filteredProducts = this.filterProducts(query);
-      this.setPage(1); // Reset pagination on search
+      this.setPage(1);
     });
   }
 
@@ -64,13 +67,13 @@ export class CardsComponent {
   sortAscending() {
     this.filteredProducts.sort((a, b) => a.price - b.price);
     this.sortDirection = 'asc';
-    this.setPage(1); // Reset pagination after sorting
+    this.setPage(1);
   }
 
   sortDescending() {
     this.filteredProducts.sort((a, b) => b.price - a.price);
     this.sortDirection = 'desc';
-    this.setPage(1); // Reset pagination after sorting
+    this.setPage(1);
   }
 
   onSortOrderChange(event: Event) {
@@ -81,4 +84,5 @@ export class CardsComponent {
       this.sortDescending();
     }
   }
+
 }
