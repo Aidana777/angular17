@@ -1,3 +1,4 @@
+// card.service.ts
 import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
@@ -25,6 +26,9 @@ export class CardService {
 
     if (existingItem && existingItem.quantity > 0) {
       existingItem.quantity--;
+      if (existingItem.quantity <= 0) {
+        this.removeItem(product);
+      }
     }
 
     // Emit an event to notify subscribers that the cart has been updated

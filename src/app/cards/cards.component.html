@@ -1,6 +1,6 @@
 <div class="container">
   <div class="sorting-dropdown">
-    <label for="sortOrder">Sort By:</label>
+    <label for="sortOrder"></label>
     <select id="sortOrder" (change)="onSortOrderChange($event)">
       <option value="asc">Price: Low to High</option>
       <option value="desc">Price: High to Low</option>
@@ -8,19 +8,21 @@
   </div>
   
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
-    <div *ngFor="let product of pagedProducts" class="mb-2 text-center">
-      
+    <div *ngFor="let product of pagedProducts" class="mb-2 text-center  rounded flex flex-col justify-between items-center w-full md:max-w-xs lg:max-w-sm">
       <img class="w-full h-40 object-cover mb-2 cart" [src]="product.imageUrl" alt="{{ product.title }} Image">
-      <h2 class="text-lg font-semibold mb-1">{{ product.title }}</h2>
-      <p class="text-gray-700 mb-2">Price: {{ product.price | currency: 'USD' }}</p>
-      <div class="rating text-gray-600" *ngIf="product.rating !== undefined">
-        Rating: {{ product.rating }}/5
+      <div class="w-full px-4">
+        <h2 class="text-lg font-semibold mb-2">{{ product.title }}</h2>
+        <p class="text-gray-700 mb-2">Price: {{ product.price | currency: 'USD' }}</p>
+        <div class="rating text-gray-600 mb-2" *ngIf="product.rating !== undefined">
+          Rating: {{ product.rating }}/5
+        </div>
+        <button class="bg-blue-500 text-white px-2 py-2 rounded hover:bg-blue-600 w-full" (click)="addToCart(product)">
+          Add to Cart
+        </button>
       </div>
-      <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" (click)="addToCart(product)">
-        Add to Cart
-      </button>
     </div>
   </div>
+  
 
   <div class="pagination flex justify-center mt-8">
     <button class="pagination-button px-4 py-2 mr-2 bg-green-500 text-white rounded disabled:bg-gray-400" (click)="pageChanged(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
