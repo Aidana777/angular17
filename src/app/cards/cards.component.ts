@@ -22,6 +22,7 @@ export class CardsComponent {
   itemsPerPage: number = 8;
   sortDirection: 'asc' | 'desc' = 'asc';
   loading: boolean = false;
+  currentSortOrder: 'asc' | 'desc' = 'asc';
 
   constructor(private httpClient: HttpClient, private cartService: CardService, private searchService: SearchService) { }
 
@@ -31,6 +32,13 @@ export class CardsComponent {
       .subscribe(data => {
         this.products = data;
         this.filteredProducts = this.products;
+
+        if (this.currentSortOrder === 'asc') {
+          this.sortAscending();
+        } else if (this.currentSortOrder === 'desc') {
+          this.sortDescending();
+        }
+
         this.setPage(1);
         this.loading = false;
       });
@@ -66,13 +74,13 @@ export class CardsComponent {
 
   sortAscending() {
     this.filteredProducts.sort((a, b) => a.price - b.price);
-    this.sortDirection = 'asc';
+    this.currentSortOrder = 'asc';
     this.setPage(1);
   }
 
   sortDescending() {
     this.filteredProducts.sort((a, b) => b.price - a.price);
-    this.sortDirection = 'desc';
+    this.currentSortOrder = 'desc';
     this.setPage(1);
   }
 

@@ -2,9 +2,17 @@
     @apply mx-auto;
     max-width: 600px;
     margin-top: 10px;
+    padding: 20px;
 }
+  
+  .pagination {
+    margin-top: 20px;
+  }
+  
+  .pagination-button {
+    margin: 0 4px;
+  }
 
-/* Для мобильных устройств */
 @media (max-width: 767px) {
     .cart {
         height: 360px;
